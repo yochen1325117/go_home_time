@@ -34,23 +34,29 @@
         var countDownDate = new Date(m+' '+d+", 2018 18:00:00").getTime();
         var x = setInterval(function() {
             var now = new Date().getTime();
-            var distance = countDownDate - now;
+            
+            if(now > countDownDate){
+                countDownDate = new Date(m+' '+d+", 2018 24:00:00").getTime();
+                var distance = countDownDate - now;
+            }else{
+                var distance = countDownDate - now;    
+            }
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours + ":"
-            +(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
+            document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours + ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
             if(seconds%4==1 || seconds%4==2){
-document.getElementById("seafood").innerHTML = "感恩Cliff"
-}else{
-document.getElementById("seafood").innerHTML ="讚嘆Christine"
-}
-            // If the count down is over, write some text 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("demo1").innerHTML = "EXPIRED";
-}
+                document.getElementById("seafood").innerHTML = "感恩Cliff"
+                }else{
+                    document.getElementById("seafood").innerHTML ="讚嘆Christine"
+                    }
+            if(countDownDate == 1541520000000){
+                document.getElementById("seafood").innerHTML ="明日上班時間，大家可以回家拉"
+                document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours+9+ ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
+
+            }
+            
         }, 1000);
         </script>
         
