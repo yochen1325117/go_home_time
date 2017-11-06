@@ -1,0 +1,59 @@
+
+<html>
+    <head>
+            <meta charset="UTF-8">
+            <script src='https://code.jquery.com/jquery-3.2.1.min.js' ></script>
+            <script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+            <script type="text/javascript" src="nyan.js"></script>
+    </head>
+    <body style='background-color:rgba(0,0,0,0.7);'>
+        <style>
+#demo1{
+        font-family: 'Hack-Bold';
+        }
+#seafood{
+	font-family:Heiti TC;
+}
+@font-face{
+            font-family :'8bit_wonder' ;    
+            src :  url( '8-BITWONDER.TTF' );        
+            }
+ @font-face{
+        font-family :'Hack-Bold' ;    
+            src :  url('Hack-Bold.ttf')
+               
+            }
+</style>
+
+<h1 style='margin-top:17%;margin-bottom:0;font-size:175px;text-align:center;color:#00ff00'id="demo1"></h1>
+<p style='font-size:80px;text-align:center;color:#00ff00'id="seafood"></p>
+        <script>
+        
+        let d = new Date().getDate()
+        let m = new Date().getMonth()+1
+        var countDownDate = new Date(m+' '+d+", 2018 18:00:00").getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours + ":"
+            +(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
+            if(seconds%4==1 || seconds%4==2){
+document.getElementById("seafood").innerHTML = "感恩Cliff"
+}else{
+document.getElementById("seafood").innerHTML ="讚嘆Christine"
+}
+            // If the count down is over, write some text 
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo1").innerHTML = "EXPIRED";
+}
+        }, 1000);
+        </script>
+        
+    </body>
+   
+</html>
