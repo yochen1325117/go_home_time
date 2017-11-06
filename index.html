@@ -34,7 +34,6 @@
         var countDownDate = new Date(m+' '+d+", 2018 18:00:00").getTime();
         var x = setInterval(function() {
             var now = new Date().getTime();
-            
             if(now > countDownDate){
                 countDownDate = new Date(m+' '+d+", 2018 24:00:00").getTime();
                 var distance = countDownDate - now;
@@ -50,11 +49,11 @@
                 document.getElementById("seafood").innerHTML = "感恩Cliff"
                 }else{
                     document.getElementById("seafood").innerHTML ="讚嘆Christine"
-                    }
+                }
             if(countDownDate == 1541520000000){
+                hours=hours+9;
                 document.getElementById("seafood").innerHTML ="明日上班時間，大家可以回家拉"
-                document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours+9+ ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
-
+                document.getElementById("demo1").innerHTML = ( (hours<10 ? '0' : '')+hours+ ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds )
             }
             
         }, 1000);
