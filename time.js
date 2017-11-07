@@ -8,10 +8,10 @@ var time_to_ = setInterval(function() {
     var go_home_time = 18*60*60
     var less_time = go_home_time - now_time
     var lunch = 12*60*60
-    if(now_time > (lunch-5*60) && now_time < (lunch+5*60)){
-        document.getElementById("message").innerHTML('吃飯囉') 
+    if(now_time > (lunch-5*60) && now_time < (lunch+15*60)){
+        document.getElementById("message").innerHTML=('吃飯囉') 
     }else{
-        document.getElementById("message").innerHTML('')
+        document.getElementById("message").innerHTML=('')
     }
     if(less_time<300){
         if(seconds%2==0 || seconds%2==1){
