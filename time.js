@@ -7,6 +7,10 @@ var time_to_ = setInterval(function() {
     var now_time = (hours*60*60) + (minutes*60) + seconds
     var go_home_time = 18*60*60
     var less_time = go_home_time - now_time
+    var lunch = 12*60*60
+    if(now_time > lunch && now_time < (lunch+5*60)){
+        alert('吃飯囉')
+    }
     if(less_time<300){
         if(seconds%2==0 || seconds%2==1){
             document.getElementById("demo1").style.color= 'red' 
