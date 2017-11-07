@@ -118,8 +118,8 @@ for (i=0;i<ARRcookies.length;i++)
 }
 
 window.addEventListener('load', function () {
-    if (!getCookie("nyan")) {
+    // if (!getCookie("nyan")) {
         nyan();
-        setCookie("nyan", "true");
-    }
+        // setCookie("nyan", "true");
+    // }
 });
