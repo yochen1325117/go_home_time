@@ -4,6 +4,7 @@ var time_to_ = setInterval(function() {
     var hours =time.getHours()
     var minutes =time.getMinutes()
     var seconds = time.getSeconds()
+    var min_sec = time.getMilliseconds();
     var now_time = (hours*60*60) + (minutes*60) + seconds
     var go_home_time = 18*60*60
     var less_time = go_home_time - now_time
@@ -14,15 +15,17 @@ var time_to_ = setInterval(function() {
         document.getElementById("message").innerHTML=('')
     }
     if(less_time<300){
-        if(seconds%2==0 || seconds%2==1){
+        if(min_sec%2==0){
             document.getElementById("demo1").style.color= 'red' 
         }else{
             document.getElementById("demo1").style.color= 'rgba(0,0,0,0)'             
         }    
-    }else if(less_time<0){
+    }
+    if(less_time<0){
         go_home_time = 24*60*60
         less_time = go_home_time - now_time
     }
+
     hours = Math.floor(less_time/60/60)
     minutes = Math.floor(less_time/60%60)
     seconds = Math.floor(less_time%60%60)
