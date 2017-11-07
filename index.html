@@ -26,39 +26,9 @@
 </style>
 
 <h1 style='margin-top:17%;margin-bottom:0;font-size:175px;text-align:center;color:#00ff00'id="demo1"></h1>
-<p style='font-size:80px;text-align:center;color:#00ff00'id="seafood"></p>
-        <script>
-        
-        let d = new Date().getDate()
-        let m = new Date().getMonth()+1
-        var countDownDate = new Date(m+' '+d+", 2018 18:00:00").getTime();
-        var x = setInterval(function() {
-            var now = new Date().getTime();
-            if(now > countDownDate){
-                countDownDate = new Date(m+' '+d+", 2018 24:00:00").getTime();
-                var distance = countDownDate - now;
-            }else{
-                var distance = countDownDate - now;    
-            }
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            document.getElementById("demo1").innerHTML = (hours<10 ? '0' : '')+hours + ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
-            if(seconds%4==1 || seconds%4==2){
-                document.getElementById("seafood").innerHTML = "感恩Cliff"
-                }else{
-                    document.getElementById("seafood").innerHTML ="讚嘆Christine"
-                }
-            if(countDownDate == 1541520000000){
-                hours=hours+9;
-                document.getElementById("seafood").innerHTML ="明日上班時間，大家可以回家拉"
-                document.getElementById("demo1").innerHTML = ( (hours<10 ? '0' : '')+hours+ ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds )
-            }
-            
-        }, 1000);
-        </script>
-        
-    </body>
+<p style='font-size:80px;text-align:center;color:#00ff00'id="seafood"></p>  
+
+
+</body>
    
 </html>
