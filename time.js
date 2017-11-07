@@ -1,42 +1,68 @@
+const HOUR = 3600
+const MINUTE = 60
 
-var time_to_ = setInterval(function() {
-    var time = new Date();
-    var hours =time.getHours()
-    var minutes =time.getMinutes()
-    var seconds = time.getSeconds()
-    var min_sec = time.getMilliseconds();
-    var now_time = (hours*60*60) + (minutes*60) + seconds
-    var go_home_time = 18*60*60
-    var less_time = go_home_time - now_time
-    var lunch = 12*60*60
-    if(now_time > (lunch-5*60) && now_time < (lunch+15*60)){
-        document.getElementById("message").innerHTML=('吃飯囉') 
-    }else{
-        document.getElementById("message").innerHTML=('')
+
+function timer() {
+    // URL parameter
+    let url = new URL(location.href)
+    let hh = url.searchParams.get("hh") || 18
+    let mm = url.searchParams.get("mm") || 0
+
+    // Time parameter
+    var time = new Date()
+    var now_time = time.getHours()*HOUR + time.getMinutes()*MINUTE + time.getSeconds()
+    var go_home_time = hh*HOUR + mm*MINUTE
+    var less_time = go_home_time - now_time // left_time
+    var lunch = 12*HOUR
+    var sec = time.getSeconds();
+
+    let opacity = 1 - less_time/(9*HOUR)
+
+    // Lunch notification
+    if (now_time > (lunch - 5*MINUTE) && now_time < (lunch + 15*MINUTE)) {
+        document.getElementById("message").innerHTML = ('吃飯囉') 
+    } else {
+        document.getElementById("message").innerHTML = ('')
     }
-    if(less_time<300){
-        if(min_sec%2==0){
-            document.getElementById("demo1").style.color= 'red' 
-        }else{
-            document.getElementById("demo1").style.color= 'rgba(0,0,0,0)'             
+    
+    // Work off alert
+    if (less_time < 300){
+        if(count ==0) {
+            document.getElementById("demo1").style.color = 'red' 
+            count=1
+        } else if (count==1) {
+            document.getElementById("demo1").style.color = 'rgba(0,0,0,0)'  
+            count=0           
         }    
-    }
-    if(less_time<0){
-        go_home_time = 24*60*60
+    } 
+    if (less_time < 0){
+        go_home_time = 24*HOUR
         less_time = go_home_time - now_time
     }
 
-    hours = Math.floor(less_time/60/60)
-    minutes = Math.floor(less_time/60%60)
-    seconds = Math.floor(less_time%60%60)
-    if(go_home_time==(24*60*60)){
-        hours+=9
+    // Deal with point number
+    hours = Math.floor(less_time/HOUR)
+    minutes = Math.floor(less_time/MINUTE%MINUTE)
+    seconds = Math.floor(less_time%MINUTE%MINUTE)
+    if (go_home_time == (24*HOUR)) {
+        hours += 9
     }
-    var out= (hours<10 ? '0' : '')+hours + ":"+(minutes<10 ? '0':'')+ minutes + ":"+(seconds<10 ? '0' : '')+ seconds;
-    document.getElementById("demo1").innerHTML = out;   
-    if(seconds%4==1 || seconds%4==2){
+
+    // Display left time
+    var out = (hours < 10 ? '0' : '') + hours + ":" + 
+              (minutes < 10 ? '0' : '') + minutes + ":" + 
+              (seconds < 10 ? '0' : '') + seconds
+    document.getElementById("demo1").innerHTML = out
+    document.getElementById("demo1").style.opacity = opacity
+
+    // Marquee
+    if (seconds%4 < 2) {
         document.getElementById("seafood").innerHTML = "感恩Cliff"
-    }else{
+    } else {
         document.getElementById("seafood").innerHTML ="讚嘆Christine"
     }
-}, 1000);
+}
+
+var count = 0;
+var time_to_ = setInterval(timer, 500)
+
