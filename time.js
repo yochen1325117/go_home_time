@@ -1,7 +1,5 @@
 const HOUR = 3600
 const MINUTE = 60
-
-
 function timer() {
     // URL parameter
     let url = new URL(location.href)
@@ -14,7 +12,8 @@ function timer() {
     var go_home_time = hh*HOUR + mm*MINUTE
     var less_time = go_home_time - now_time // left_time
     var lunch = 12*HOUR
-    var sec = time.getSeconds();
+
+    var min_sec = time.getMilliseconds();
 
     let opacity = 1 - less_time/(9*HOUR)
 
@@ -33,6 +32,7 @@ function timer() {
         } else if (count==1) {
             document.getElementById("demo1").style.color = 'rgba(0,0,0,0)'  
             count=0           
+
         }    
     } 
     if (less_time < 0){
