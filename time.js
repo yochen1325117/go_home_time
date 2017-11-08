@@ -15,7 +15,6 @@ function timer() {
 
     var min_sec = time.getMilliseconds();
 
-    let opacity = 1 - less_time/(9*HOUR)
 
     // Lunch notification
     if (now_time > (lunch - 5*MINUTE) && now_time < (lunch + 15*MINUTE)) {
@@ -27,7 +26,7 @@ function timer() {
     // Work off alert
     if (less_time < 300){
         if(count ==0) {
-            document.getElementById("demo1").style.color = 'red' 
+            document.getElementById("demo1").style.color = 'rgba(0,255,0,1)' 
             count=1
         } else if (count==1) {
             document.getElementById("demo1").style.color = 'rgba(0,0,0,0)'  
@@ -53,7 +52,6 @@ function timer() {
               (minutes < 10 ? '0' : '') + minutes + ":" + 
               (seconds < 10 ? '0' : '') + seconds
     document.getElementById("demo1").innerHTML = out
-    document.getElementById("demo1").style.opacity = opacity
 
     // Marquee
     if (seconds%4 < 2) {
